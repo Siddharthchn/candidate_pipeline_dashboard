@@ -3,6 +3,7 @@ export type Stage = "Applied" | "Shortlisted" | "Interview" | "Offered" | "Hired
 export interface Candidate {
   id: string;
   name: string;
+  email?: string;
   role: string;
   company: string;
   experience: number; // in years
