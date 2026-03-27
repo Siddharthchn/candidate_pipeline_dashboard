@@ -43,8 +43,8 @@ export function DashboardClient() {
     <>
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8 gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-slate-900 dark:text-white tracking-tight">Candidate Pipeline</h1>
-          <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">Manage and track candidates for the Senior Frontend Engineer role.</p>
+          <h1 className="text-2xl font-bold text-slate-800 tracking-tight">Candidate Pipeline</h1>
+          <p className="text-sm text-slate-600 mt-1">Manage and track candidates for the Senior Frontend Engineer role.</p>
         </div>
         
         <div className="flex items-center space-x-3 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-1.5 rounded-xl shadow-sm">

@@ -5,10 +5,10 @@ import { Bell, Search } from "lucide-react";
 export function Topbar() {
   return (
     <header className="h-20 bg-[var(--background)] px-8 flex items-center justify-between sticky top-0 z-10">
-      <div className="flex items-center space-x-2 text-sm text-slate-500 dark:text-slate-400">
+      <div className="flex items-center space-x-2 text-sm text-slate-600">
         <span>Jobs</span>
         <span>/</span>
-        <span className="font-medium text-slate-900 dark:text-slate-100">Senior Frontend Engineer</span>
+        <span className="font-medium text-slate-800">Senior Frontend Engineer</span>
       </div>
 
       <div className="flex items-center space-x-6">
