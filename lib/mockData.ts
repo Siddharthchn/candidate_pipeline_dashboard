@@ -100,7 +100,7 @@ export const mockCandidates: Candidate[] = [
 export const jobOverview = {
   title: "Senior Frontend Engineer",
   department: "Product Engineering",
-  location: "San Francisco, CA (Hybrid)",
+  location: "Gurugram, Delhi, Bengaluru (Hybrid)",
   openPositions: 2,
   hiringManager: "Jane Doe",
   totalApplicants: 142
