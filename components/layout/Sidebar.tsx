@@ -1,8 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "framer-motion";
-import { LayoutDashboard, Users, Briefcase, Calendar, Settings, ChevronLeft, ChevronRight } from "lucide-react";
+import { LayoutDashboard, Users, Briefcase, Calendar, Settings, PanelLeftClose, PanelLeft, Search } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
@@ -20,70 +19,71 @@ export function Sidebar() {
   const pathname = usePathname();
 
   return (
-    <motion.aside
-      initial={false}
-      animate={{ width: isCollapsed ? 80 : 260 }}
-      transition={{ duration: 0.3, ease: "easeInOut" }}
-      className="h-screen bg-white dark:bg-slate-900 border-r border-slate-200 dark:border-slate-800 flex flex-col items-center py-6 px-4 relative z-20 shrink-0 shadow-sm"
+    <aside
+      className={cn(
+        "h-screen flex flex-col transition-all duration-300 border-r border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-[#111111] shrink-0",
+        isCollapsed ? "w-16" : "w-60"
+      )}
     >
-      <div className="flex items-center w-full mb-10 overflow-hidden px-2">
-        <div className="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center shrink-0">
-          <Briefcase className="w-4 h-4 text-white" />
+      <div className="flex items-center w-full px-4 h-14 shrink-0">
+        <div className="w-6 h-6 rounded bg-zinc-900 dark:bg-white flex items-center justify-center shrink-0 shadow-sm">
+          <Briefcase className="w-3.5 h-3.5 text-white dark:text-black stroke-[2.5]" />
         </div>
         {!isCollapsed && (
-          <motion.span
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="ml-3 font-semibold text-lg text-slate-800 dark:text-slate-100 whitespace-nowrap"
-          >
+          <span className="ml-2.5 font-bold text-[14px] text-zinc-900 dark:text-zinc-100 tracking-tight">
             HireSync
-          </motion.span>
+          </span>
         )}
       </div>
 
-      <button
-        onClick={() => setIsCollapsed(!isCollapsed)}
-        className="absolute -right-3 top-8 w-6 h-6 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-full flex items-center justify-center text-slate-500 hover:text-blue-600 shadow-sm transition-colors z-50"
-      >
-        {isCollapsed ? <ChevronRight className="w-4 h-4" /> : <ChevronLeft className="w-4 h-4" />}
-      </button>
+      <div className="px-3 mb-2">
+        <button className={cn("flex items-center w-full bg-white dark:bg-zinc-900/50 border border-zinc-200 dark:border-zinc-800 rounded-md text-zinc-500 dark:text-zinc-400 hover:border-zinc-300 dark:hover:border-zinc-700 transition-colors shadow-sm", isCollapsed ? "justify-center h-8" : "px-2 py-1.5")}>
+          <Search className="w-3.5 h-3.5 shrink-0" />
+          {!isCollapsed && <span className="text-[13px] ml-2">Search...</span>}
+          {!isCollapsed && <kbd className="ml-auto text-[10px] font-sans bg-zinc-100 dark:bg-zinc-800 px-1.5 rounded text-zinc-400 border border-zinc-200 dark:border-zinc-700">⌘K</kbd>}
+        </button>
+      </div>
 
-      <nav className="flex-1 w-full space-y-2">
+      <div className="flex-1 w-full px-3 py-2 space-y-0.5 overflow-y-auto">
+        {!isCollapsed && <div className="text-[11px] font-medium text-zinc-400 dark:text-zinc-500 uppercase tracking-widest px-2 mb-2 mt-4">Platform</div>}
         {navItems.map((item) => {
           const isActive = pathname === item.href || (item.href !== "/" && pathname.startsWith(item.href));
           
           return (
-            <Link key={item.href} href={item.href}>
+            <Link key={item.href} href={item.href} className="outline-none block">
               <div
                 className={cn(
-                  "flex items-center px-2 py-3 mb-1 rounded-xl transition-all duration-200 group cursor-pointer",
+                  "flex items-center rounded-md transition-colors cursor-pointer group text-[13px] font-medium",
+                  isCollapsed ? "justify-center h-8" : "px-2 py-1.5",
                   isActive
-                    ? "bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400"
-                    : "text-slate-500 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800/50 hover:text-slate-900 dark:hover:text-slate-200"
+                    ? "bg-zinc-200/50 dark:bg-zinc-800/80 text-zinc-900 dark:text-zinc-100"
+                    : "text-zinc-600 dark:text-zinc-400 hover:bg-zinc-200/50 dark:hover:bg-zinc-800/50 hover:text-zinc-900 dark:hover:text-zinc-200"
                 )}
               >
-                <item.icon className={cn("w-5 h-5 shrink-0", isCollapsed ? "mx-auto" : "ml-2")} />
-                {!isCollapsed && (
-                  <span className="ml-3 font-medium whitespace-nowrap">{item.label}</span>
-                )}
+                <item.icon className={cn("w-4 h-4 shrink-0 stroke-[2]", isActive ? "text-zinc-900 dark:text-zinc-200" : "text-zinc-500 dark:text-zinc-400 group-hover:text-zinc-700 dark:group-hover:text-zinc-300", !isCollapsed && "mr-2.5")} />
+                {!isCollapsed && <span className="truncate">{item.label}</span>}
               </div>
             </Link>
           );
         })}
-      </nav>
+      </div>
       
-      <div className="w-full mt-auto">
-        <div className="flex items-center p-2 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/50">
-           <img src="https://i.pravatar.cc/150?u=recruiter" alt="User" className="w-8 h-8 rounded-full shrink-0" />
+      <div className="w-full mt-auto border-t border-zinc-200 dark:border-zinc-800 p-3 flex flex-col gap-2">
+        <div className="flex items-center group cursor-pointer hover:bg-zinc-200/50 dark:hover:bg-zinc-800/80 rounded-md transition-colors p-1.5">
+           <img src="https://i.pravatar.cc/150?u=recruiter1" alt="User" className="w-6 h-6 rounded-md object-cover border border-zinc-200 dark:border-zinc-700" />
            {!isCollapsed && (
-             <div className="ml-3 overflow-hidden">
-               <p className="text-sm font-medium text-slate-700 dark:text-slate-300 truncate">Sarah Connor</p>
-               <p className="text-xs text-slate-500 truncate">Lead Recruiter</p>
+             <div className="ml-2.5 overflow-hidden flex-1">
+               <p className="text-[13px] font-medium text-zinc-700 dark:text-zinc-300 truncate">Sarah Connor</p>
              </div>
            )}
         </div>
+        <button
+          onClick={() => setIsCollapsed(!isCollapsed)}
+          className={cn("flex items-center justify-center p-1.5 rounded-md text-zinc-500 dark:text-zinc-400 hover:bg-zinc-200/50 dark:hover:bg-zinc-800/80 transition-colors cursor-pointer", isCollapsed ? "mx-auto" : "ml-auto")}
+        >
+          {isCollapsed ? <PanelLeft className="w-4 h-4" /> : <PanelLeftClose className="w-4 h-4" />}
+        </button>
       </div>
-    </motion.aside>
+    </aside>
   );
 }

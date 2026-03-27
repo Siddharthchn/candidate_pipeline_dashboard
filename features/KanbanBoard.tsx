@@ -6,7 +6,7 @@ import gsap from "gsap";
 import { motion } from "framer-motion";
 import { useDashboardStore } from "@/hooks/useStore";
 import { Stage, stages } from "@/lib/mockData";
-import { MoreHorizontal, Calendar, Star } from "lucide-react";
+import { MoreHorizontal, Calendar, Zap } from "lucide-react";
 
 export function KanbanBoard() {
   const { candidates, stageFilter, searchQuery, moveCandidate, selectCandidate, experienceFilter, scoreFilter } = useDashboardStore();
@@ -17,13 +17,13 @@ export function KanbanBoard() {
       const columns = boardRef.current.children;
       gsap.fromTo(
         columns,
-        { y: 50, opacity: 0 },
+        { y: 10, opacity: 0 },
         {
           y: 0,
           opacity: 1,
-          duration: 0.6,
-          stagger: 0.1,
-          ease: "power3.out",
+          duration: 0.3,
+          stagger: 0.05,
+          ease: "power2.out",
         }
       );
     }
@@ -50,16 +50,24 @@ export function KanbanBoard() {
     <DragDropContext onDragEnd={onDragEnd}>
       <div 
         ref={boardRef}
-        className="flex space-x-6 overflow-x-auto pb-6 kanban-scroll min-h-[600px]"
+        className="flex gap-4 overflow-x-auto pb-4 kanban-scroll min-h-[600px]"
       >
         {stages.map((stage) => {
           const columnCandidates = filteredCandidates.filter(c => c.stage === stage);
           
           return (
-            <div key={stage} className="flex-shrink-0 w-80 bg-slate-50 dark:bg-slate-900/50 rounded-2xl p-4 flex flex-col border border-slate-200 dark:border-slate-800">
-              <div className="flex items-center justify-between mb-4 px-1">
-                <h3 className="font-semibold text-slate-700 dark:text-slate-200">{stage}</h3>
-                <span className="bg-white dark:bg-slate-800 text-xs font-medium py-1 px-2 rounded-full border border-slate-200 dark:border-slate-700 shadow-sm text-slate-500 dark:text-slate-400">
+            <div key={stage} className="flex-shrink-0 w-72 bg-zinc-50 dark:bg-[#111111] rounded border border-zinc-200/60 dark:border-zinc-800 flex flex-col pt-3 pb-1 px-2 h-max">
+              <div className="flex items-center justify-between mb-3 px-1.5">
+                <div className="flex items-center gap-2">
+                  <div className={`w-2 h-2 rounded-full ${
+                    stage === 'Applied' ? 'bg-zinc-400' :
+                    stage === 'Shortlisted' ? 'bg-blue-400' :
+                    stage === 'Interview' ? 'bg-purple-400' :
+                    stage === 'Offered' ? 'bg-amber-400' : 'bg-emerald-400'
+                  }`} />
+                  <h3 className="font-semibold text-zinc-900 dark:text-zinc-100 text-[13px] tracking-tight">{stage}</h3>
+                </div>
+                <span className="text-[11px] font-mono font-medium text-zinc-500 bg-zinc-200/50 dark:bg-zinc-800 px-1.5 py-0.5 rounded">
                   {columnCandidates.length}
                 </span>
               </div>
@@ -69,8 +77,8 @@ export function KanbanBoard() {
                   <div
                     {...provided.droppableProps}
                     ref={provided.innerRef}
-                    className={`flex-1 min-h-[200px] transition-colors rounded-xl p-1 ${
-                      snapshot.isDraggingOver ? "bg-blue-50/50 dark:bg-blue-900/10" : ""
+                    className={`flex-1 min-h-[50px] transition-colors pb-2 px-1 ${
+                      snapshot.isDraggingOver ? "bg-zinc-100 dark:bg-zinc-900 rounded" : ""
                     }`}
                   >
                     {columnCandidates.map((candidate, index) => (
@@ -80,48 +88,37 @@ export function KanbanBoard() {
                             ref={provided.innerRef}
                             {...provided.draggableProps}
                             {...provided.dragHandleProps}
-                            className={`mb-3 outline-none ${snapshot.isDragging ? "z-50" : ""}`}
+                            className={`mb-2.5 outline-none`}
                             style={{ ...provided.draggableProps.style }}
                             onClick={() => selectCandidate(candidate.id)}
                           >
                             <motion.div
-                              whileHover={{ scale: 1.02 }}
-                              whileTap={{ scale: 0.98 }}
-                              className="bg-white dark:bg-slate-800 p-4 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-md transition-shadow cursor-grab active:cursor-grabbing"
+                              whileHover={{ y: -1 }}
+                              className={`bg-white dark:bg-[#161616] p-3 rounded shadow-[0_1px_3px_rgb(0,0,0,0.06)] border border-zinc-200 dark:border-zinc-800 cursor-grab active:cursor-grabbing hover:border-zinc-300 dark:hover:border-zinc-700 transition-colors ${snapshot.isDragging ? "shadow-xl border-blue-500 dark:border-blue-500" : ""}`}
                             >
-                              <div className="flex justify-between items-start mb-3">
-                                <div className="flex gap-3 items-center">
-                                  <img src={candidate.avatar} alt={candidate.name} className="w-10 h-10 rounded-full object-cover shrink-0 pointer-events-none" />
-                                  <div>
-                                    <h4 className="font-semibold text-slate-900 dark:text-slate-100 text-sm">{candidate.name}</h4>
-                                    <p className="text-xs text-slate-500 dark:text-slate-400">{candidate.role}</p>
-                                  </div>
-                                </div>
-                                <button className="text-slate-400 hover:text-slate-600 dark:hover:text-slate-300">
-                                  <MoreHorizontal className="w-4 h-4" />
+                              <div className="flex justify-between items-start mb-2.5">
+                                <h4 className="font-semibold text-zinc-900 dark:text-zinc-100 text-[13px] leading-tight flex-1">{candidate.name}</h4>
+                                <button className="text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-300">
+                                  <MoreHorizontal className="w-3.5 h-3.5" />
                                 </button>
                               </div>
+                              <p className="text-[12px] text-zinc-500 dark:text-zinc-400 mb-3 leading-snug">{candidate.role}</p>
 
-                              <div className="flex flex-wrap gap-2 mb-3">
-                                {candidate.skills.slice(0, 2).map(skill => (
-                                  <span key={skill} className="px-2 py-1 bg-slate-100 dark:bg-slate-700/50 text-slate-600 dark:text-slate-300 rounded text-[10px] font-medium font-mono">
+                              <div className="flex flex-wrap gap-1.5 mb-3">
+                                {candidate.skills.slice(0, 3).map(skill => (
+                                  <span key={skill} className="px-1.5 py-0.5 bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-300 rounded text-[10px] font-medium font-mono border border-zinc-200/50 dark:border-zinc-700/50">
                                     {skill}
                                   </span>
                                 ))}
-                                {candidate.skills.length > 2 && (
-                                  <span className="px-2 py-1 bg-slate-100 dark:bg-slate-700/50 text-slate-600 dark:text-slate-300 rounded text-[10px] font-medium font-mono">
-                                    +{candidate.skills.length - 2}
-                                  </span>
-                                )}
                               </div>
 
-                              <div className="flex items-center justify-between mt-4">
-                                <div className="flex items-center space-x-1 text-slate-400 dark:text-slate-500 text-xs">
-                                  <Calendar className="w-3 h-3" />
-                                  <span>{candidate.lastActivity}</span>
+                              <div className="flex items-center justify-between pt-2 border-t border-dashed border-zinc-200 dark:border-zinc-800">
+                                <div className="flex items-center gap-1.5 text-zinc-500 text-[11px] font-medium">
+                                  <Calendar className="w-3 h-3 stroke-[2.5]" />
+                                  <span>{candidate.lastActivity.replace(" ago", "")}</span>
                                 </div>
-                                <div className="flex items-center space-x-1 text-amber-500 dark:text-amber-400 text-xs font-semibold">
-                                  <Star className="w-3 h-3 fill-current" />
+                                <div className="flex items-center gap-1 text-zinc-900 dark:text-zinc-100 text-[11px] font-bold">
+                                  <Zap className="w-3 h-3 fill-amber-400 text-amber-500" />
                                   <span>{candidate.score}</span>
                                 </div>
                               </div>

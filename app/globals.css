@@ -4,55 +4,59 @@
   --color-border: hsl(240 5.9% 90%);
   --color-border-dark: hsl(240 3.7% 15.9%);
   
-  --color-background: #fafafa;
-  --color-foreground: #09090b;
+  --color-background: #FAFAFA;
+  --color-foreground: #111111;
   
-  --color-surface: #ffffff;
-  --color-surface-hover: #f4f4f5;
+  --color-surface: #FFFFFF;
+  --color-surface-hover: #F4F4F5;
   
-  --color-accent: #6366f1;
-  --color-accent-hover: #4f46e5;
-  --color-accent-foreground: #ffffff;
+  --color-accent: #222222;
+  --color-accent-hover: #000000;
+  --color-accent-foreground: #FFFFFF;
   
-  --color-muted: #f4f4f5;
-  --color-muted-foreground: #71717a;
+  --color-muted: #F4F4F5;
+  --color-muted-foreground: #71717A;
 
-  --color-card: #ffffff;
-  --color-card-foreground: #09090b;
+  --color-card: #FFFFFF;
+  --color-card-foreground: #111111;
   
+  --radius-sm: 0.25rem;
+  --radius-md: 0.375rem;
+  --radius-lg: 0.5rem;
   --radius-xl: 0.75rem;
-  --radius-2xl: 1rem;
 }
 
 :root {
-  --background: #fafafa;
-  --foreground: #09090b;
-  --surface: #ffffff;
-  --surface-hover: #f4f4f5;
-  --muted: #f4f4f5;
-  --muted-foreground: #71717a;
-  --border: #e4e4e7;
-  --card: #ffffff;
-  --card-foreground: #09090b;
+  --background: #FAFAFA;
+  --foreground: #111111;
+  --surface: #FFFFFF;
+  --surface-hover: #F4F4F5;
+  --muted: #F4F4F5;
+  --muted-foreground: #71717A;
+  --border: #E4E4E7;
+  --card: #FFFFFF;
+  --card-foreground: #111111;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #09090b;
-    --foreground: #fafafa;
-    --surface: #18181b;
-    --surface-hover: #27272a;
-    --muted: #27272a;
-    --muted-foreground: #a1a1aa;
-    --border: #27272a;
-    --card: #18181b;
-    --card-foreground: #fafafa;
+    --background: #09090B;
+    --foreground: #EDEDED;
+    --surface: #121212;
+    --surface-hover: #1A1A1A;
+    --muted: #1A1A1A;
+    --muted-foreground: #A1A1AA;
+    --border: #27272A;
+    --card: #121212;
+    --card-foreground: #EDEDED;
   }
 }
 
 body {
   background-color: var(--background);
   color: var(--foreground);
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  -webkit-font-smoothing: antialiased;
 }
 
 .kanban-scroll {
@@ -60,12 +64,12 @@ body {
   scrollbar-color: var(--border) transparent;
 }
 .kanban-scroll::-webkit-scrollbar {
-  height: 8px;
+  height: 6px;
 }
 .kanban-scroll::-webkit-scrollbar-track {
   background: transparent;
 }
 .kanban-scroll::-webkit-scrollbar-thumb {
   background-color: var(--border);
-  border-radius: 20px;
+  border-radius: 4px;
 }

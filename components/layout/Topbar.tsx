@@ -1,29 +1,23 @@
 "use client";
 
-import { Bell, Search } from "lucide-react";
+import { Bell, HelpCircle } from "lucide-react";
 
 export function Topbar() {
   return (
-    <header className="h-20 bg-[var(--background)] px-8 flex items-center justify-between sticky top-0 z-10">
-      <div className="flex items-center space-x-2 text-sm text-slate-600">
-        <span>Jobs</span>
-        <span>/</span>
-        <span className="font-medium text-slate-800">Senior Frontend Engineer</span>
+    <header className="h-14 bg-white dark:bg-[#111111] border-b border-zinc-200 dark:border-zinc-800 px-6 flex items-center justify-between sticky top-0 z-10">
+      <div className="flex items-center space-x-2 text-[13px]">
+        <span className="text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors cursor-pointer font-medium">Jobs</span>
+        <span className="text-zinc-300 dark:text-zinc-700">/</span>
+        <span className="text-zinc-900 dark:text-zinc-100 font-medium">Senior Frontend Engineer</span>
       </div>
 
-      <div className="flex items-center space-x-6">
-        <div className="relative">
-          <Search className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
-          <input
-            type="text"
-            placeholder="Quick search..."
-            className="pl-9 pr-4 py-2 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all w-64 shadow-sm"
-          />
-        </div>
-        
-        <button className="relative w-10 h-10 rounded-full border border-slate-200 dark:border-slate-800 flex items-center justify-center bg-white dark:bg-slate-900 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors shadow-sm">
-          <Bell className="w-4 h-4 text-slate-600 dark:text-slate-300" />
-          <span className="absolute top-2 right-2.5 w-2 h-2 rounded-full bg-red-500 border-2 border-white dark:border-slate-900"></span>
+      <div className="flex items-center space-x-3">
+        <button className="relative w-8 h-8 rounded-md flex items-center justify-center text-zinc-500 hover:text-zinc-900 dark:hover:text-white hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-all">
+          <HelpCircle className="w-4 h-4 stroke-[2]" />
+        </button>
+        <button className="relative w-8 h-8 rounded-md flex items-center justify-center text-zinc-500 hover:text-zinc-900 dark:hover:text-white hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-all">
+          <Bell className="w-4 h-4 stroke-[2]" />
+          <span className="absolute top-2 right-2.5 w-1.5 h-1.5 rounded-full bg-blue-500 ring-2 ring-white dark:ring-[#111111]"></span>
         </button>
       </div>
     </header>
