@@ -93,7 +93,7 @@ export function Sidebar() {
         </div>
         <button
           onClick={() => setIsCollapsed(!isCollapsed)}
-          className={cn("flex items-center justify-center p-1.5 rounded-md text-zinc-500 dark:text-zinc-400 hover:bg-zinc-200/50 dark:hover:bg-zinc-800/80 transition-colors cursor-pointer", isCollapsed ? "mx-auto" : "ml-auto")}
+          className={cn("hidden lg:flex items-center justify-center p-1.5 rounded-md text-zinc-500 dark:text-zinc-400 hover:bg-zinc-200/50 dark:hover:bg-zinc-800/80 transition-colors cursor-pointer", isCollapsed ? "mx-auto" : "ml-auto")}
         >
           {isCollapsed ? <PanelLeft className="w-4 h-4" /> : <PanelLeftClose className="w-4 h-4" />}
         </button>
