@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { LayoutDashboard, Users, Briefcase, Calendar, Settings, PanelLeftClose, PanelLeft, Search } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -17,6 +17,20 @@ const navItems = [
 export function Sidebar() {
   const [isCollapsed, setIsCollapsed] = useState(false);
   const pathname = usePathname();
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 1024) {
+        setIsCollapsed(true);
+      } else {
+        setIsCollapsed(false);
+      }
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   return (
     <aside
@@ -48,7 +62,7 @@ export function Sidebar() {
         {!isCollapsed && <div className="text-[11px] font-medium text-zinc-400 dark:text-zinc-500 uppercase tracking-widest px-2 mb-2 mt-4">Platform</div>}
         {navItems.map((item) => {
           const isActive = pathname === item.href || (item.href !== "/" && pathname.startsWith(item.href));
-          
+
           return (
             <Link key={item.href} href={item.href} className="outline-none block">
               <div
@@ -67,15 +81,15 @@ export function Sidebar() {
           );
         })}
       </div>
-      
+
       <div className="w-full mt-auto border-t border-zinc-200 dark:border-zinc-800 p-3 flex flex-col gap-2">
         <div className="flex items-center group cursor-pointer hover:bg-zinc-200/50 dark:hover:bg-zinc-800/80 rounded-md transition-colors p-1.5">
-           <img src="https://i.pravatar.cc/150?u=recruiter1" alt="User" className="w-6 h-6 rounded-md object-cover border border-zinc-200 dark:border-zinc-700" />
-           {!isCollapsed && (
-             <div className="ml-2.5 overflow-hidden flex-1">
-               <p className="text-[13px] font-medium text-zinc-700 dark:text-zinc-300 truncate">Sarah Connor</p>
-             </div>
-           )}
+          <img src="https://i.pravatar.cc/150?u=recruiter1" alt="User" className="w-6 h-6 rounded-md object-cover border border-zinc-200 dark:border-zinc-700" />
+          {!isCollapsed && (
+            <div className="ml-2.5 overflow-hidden flex-1">
+              <p className="text-[13px] font-medium text-zinc-700 dark:text-zinc-300 truncate">Siddharth Singh</p>
+            </div>
+          )}
         </div>
         <button
           onClick={() => setIsCollapsed(!isCollapsed)}

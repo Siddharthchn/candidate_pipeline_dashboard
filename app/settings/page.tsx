@@ -41,15 +41,15 @@ export default function SettingsPage() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="space-y-1.5">
                   <label className="text-[12px] font-semibold text-zinc-700 dark:text-zinc-300">First Name</label>
-                  <input type="text" defaultValue="Sarah" className="w-full p-2 text-[13px] bg-white dark:bg-[#111111] border border-zinc-200 dark:border-zinc-700 rounded-md focus:outline-none focus:ring-1 focus:ring-zinc-400 dark:focus:ring-zinc-600 font-medium" />
+                  <input type="text" defaultValue="Siddarth" className="w-full p-2 text-[13px] bg-white dark:bg-[#111111] border border-zinc-200 dark:border-zinc-700 rounded-md focus:outline-none focus:ring-1 focus:ring-zinc-400 dark:focus:ring-zinc-600 font-medium" />
                 </div>
                 <div className="space-y-1.5">
                   <label className="text-[12px] font-semibold text-zinc-700 dark:text-zinc-300">Last Name</label>
-                  <input type="text" defaultValue="Connor" className="w-full p-2 text-[13px] bg-white dark:bg-[#111111] border border-zinc-200 dark:border-zinc-700 rounded-md focus:outline-none focus:ring-1 focus:ring-zinc-400 dark:focus:ring-zinc-600 font-medium" />
+                  <input type="text" defaultValue="Singh" className="w-full p-2 text-[13px] bg-white dark:bg-[#111111] border border-zinc-200 dark:border-zinc-700 rounded-md focus:outline-none focus:ring-1 focus:ring-zinc-400 dark:focus:ring-zinc-600 font-medium" />
                 </div>
                 <div className="space-y-1.5 sm:col-span-2">
                   <label className="text-[12px] font-semibold text-zinc-700 dark:text-zinc-300">Email Address</label>
-                  <input type="email" defaultValue="sarah.c@hiresync.com" className="w-full p-2 text-[13px] bg-white dark:bg-[#1A1A1A] border border-zinc-200 dark:border-zinc-800 text-zinc-400 rounded-md cursor-not-allowed" disabled />
+                  <input type="email" defaultValue="siddarth.s@hiresync.com" className="w-full p-2 text-[13px] bg-white dark:bg-[#1A1A1A] border border-zinc-200 dark:border-zinc-800 text-zinc-400 rounded-md cursor-not-allowed" disabled />
                 </div>
               </div>
               
