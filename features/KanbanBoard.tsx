@@ -46,6 +46,11 @@ export function KanbanBoard() {
     return matchesStage && matchesSearch && matchesExperience && matchesScore;
   });
 
+  const isSearchActive = searchQuery.trim().length > 0;
+  const isExperienceActive = experienceFilter[0] > 0 || experienceFilter[1] < 20;
+  const isScoreActive = scoreFilter > 0;
+  const hasActiveFilters = isSearchActive || isExperienceActive || isScoreActive;
+
   const displayStages = [...stages].sort((a, b) => {
     // If a specific stage is clicked, bring it to the absolute front
     if (stageFilter !== "All") {
@@ -53,8 +58,8 @@ export function KanbanBoard() {
       if (b === stageFilter) return 1;
     }
     
-    // If searching, bring columns with results to the front
-    if (searchQuery.trim().length > 0) {
+    // If searching or filtering, bring columns with results to the front
+    if (hasActiveFilters) {
       const aHasMatches = filteredCandidates.some(c => c.stage === a);
       const bHasMatches = filteredCandidates.some(c => c.stage === b);
       
