@@ -82,7 +82,7 @@ export function CandidateTable() {
                   {c.lastActivity}
                 </td>
                 <td className="px-5 py-3 text-right">
-                  <button className="text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors p-1.5 rounded hover:bg-zinc-200 dark:hover:bg-zinc-800">
+                  <button className="text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors p-1.5 rounded hover:bg-zinc-200 dark:hover:bg-zinc-800 cursor-pointer">
                     <MoreHorizontal className="w-4 h-4" />
                   </button>
                 </td>

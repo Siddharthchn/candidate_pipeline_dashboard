@@ -98,7 +98,7 @@ export function KanbanBoard() {
                             >
                               <div className="flex justify-between items-start mb-2.5">
                                 <h4 className="font-semibold text-zinc-900 dark:text-zinc-100 text-[13px] leading-tight flex-1">{candidate.name}</h4>
-                                <button className="text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-300">
+                                <button className="text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-300 cursor-pointer">
                                   <MoreHorizontal className="w-3.5 h-3.5" />
                                 </button>
                               </div>

@@ -12,10 +12,10 @@ export function Topbar() {
       </div>
 
       <div className="flex items-center space-x-3">
-        <button className="relative w-8 h-8 rounded-md flex items-center justify-center text-zinc-500 hover:text-zinc-900 dark:hover:text-white hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-all">
+        <button className="relative w-8 h-8 rounded-md flex items-center justify-center text-zinc-500 hover:text-zinc-900 dark:hover:text-white hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-all cursor-pointer">
           <HelpCircle className="w-4 h-4 stroke-[2]" />
         </button>
-        <button className="relative w-8 h-8 rounded-md flex items-center justify-center text-zinc-500 hover:text-zinc-900 dark:hover:text-white hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-all">
+        <button className="relative w-8 h-8 rounded-md flex items-center justify-center text-zinc-500 hover:text-zinc-900 dark:hover:text-white hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-all cursor-pointer">
           <Bell className="w-4 h-4 stroke-[2]" />
           <span className="absolute top-2 right-2.5 w-1.5 h-1.5 rounded-full bg-blue-500 ring-2 ring-white dark:ring-[#111111]"></span>
         </button>

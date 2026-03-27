@@ -73,7 +73,7 @@ export function CandidateDetailDrawer() {
             <h2 className="text-[14px] font-semibold text-zinc-900 dark:text-zinc-100 tracking-tight">{candidate.name}</h2>
           </div>
           <div className="flex items-center gap-1">
-            <button className="p-1.5 text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-100 hover:bg-zinc-100 dark:hover:bg-zinc-800/80 rounded transition-colors">
+            <button className="p-1.5 text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-100 hover:bg-zinc-100 dark:hover:bg-zinc-800/80 rounded transition-colors cursor-pointer">
               <MoreVertical className="w-4 h-4" />
             </button>
             <button 
@@ -94,10 +94,10 @@ export function CandidateDetailDrawer() {
             </p>
             
             <div className="flex gap-2 w-full mt-6">
-               <button className="flex-1 bg-zinc-900 hover:bg-black dark:bg-zinc-100 dark:hover:bg-white text-white dark:text-zinc-900 font-semibold py-2 rounded text-[13px] transition-colors shadow-sm tracking-tight border border-transparent">
+               <button className="flex-1 bg-zinc-900 hover:bg-black dark:bg-zinc-100 dark:hover:bg-white text-white dark:text-zinc-900 font-semibold py-2 rounded text-[13px] transition-colors shadow-sm tracking-tight border border-transparent cursor-pointer">
                  Advance Candidate
                </button>
-               <button className="flex-1 bg-white dark:bg-[#111111] border border-zinc-200 dark:border-zinc-700 hover:border-zinc-300 dark:hover:border-zinc-600 font-semibold py-2 text-zinc-700 dark:text-zinc-300 rounded text-[13px] transition-colors shadow-sm tracking-tight">
+               <button className="flex-1 bg-white dark:bg-[#111111] border border-zinc-200 dark:border-zinc-700 hover:border-zinc-300 dark:hover:border-zinc-600 font-semibold py-2 text-zinc-700 dark:text-zinc-300 rounded text-[13px] transition-colors shadow-sm tracking-tight cursor-pointer">
                  Schedule Intervew
                </button>
             </div>

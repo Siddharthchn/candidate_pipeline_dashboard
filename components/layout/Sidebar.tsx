@@ -37,7 +37,7 @@ export function Sidebar() {
       </div>
 
       <div className="px-3 mb-2">
-        <button className={cn("flex items-center w-full bg-white dark:bg-zinc-900/50 border border-zinc-200 dark:border-zinc-800 rounded-md text-zinc-500 dark:text-zinc-400 hover:border-zinc-300 dark:hover:border-zinc-700 transition-colors shadow-sm", isCollapsed ? "justify-center h-8" : "px-2 py-1.5")}>
+        <button className={cn("flex items-center w-full bg-white dark:bg-zinc-900/50 border border-zinc-200 dark:border-zinc-800 rounded-md text-zinc-500 dark:text-zinc-400 hover:border-zinc-300 dark:hover:border-zinc-700 transition-colors shadow-sm cursor-pointer", isCollapsed ? "justify-center h-8" : "px-2 py-1.5")}>
           <Search className="w-3.5 h-3.5 shrink-0" />
           {!isCollapsed && <span className="text-[13px] ml-2">Search...</span>}
           {!isCollapsed && <kbd className="ml-auto text-[10px] font-sans bg-zinc-100 dark:bg-zinc-800 px-1.5 rounded text-zinc-400 border border-zinc-200 dark:border-zinc-700">⌘K</kbd>}

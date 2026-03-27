@@ -40,7 +40,7 @@ export function Filters() {
                   key={stage}
                   onClick={() => setStageFilter(stage as Stage | "All")}
                   className={cn(
-                    "px-2.5 py-1 rounded-[4px] text-[12px] font-semibold transition-colors whitespace-nowrap border flex items-center gap-1",
+                    "px-2.5 py-1 rounded-[4px] text-[12px] font-semibold transition-colors whitespace-nowrap border flex items-center gap-1 cursor-pointer",
                     isActive
                       ? "bg-zinc-900 text-white dark:bg-white dark:text-zinc-900 border-zinc-900 dark:border-white shadow-sm"
                       : "bg-white dark:bg-[#111111] text-zinc-600 dark:text-zinc-400 border-zinc-200 dark:border-zinc-800 hover:border-zinc-300 dark:hover:border-zinc-700"
@@ -55,7 +55,7 @@ export function Filters() {
           <button 
             onClick={() => setShowFilters(!showFilters)}
             className={cn(
-              "px-3 py-1.5 rounded-md border flex items-center gap-1.5 text-[12px] font-medium transition-colors ml-auto shadow-sm",
+              "px-3 py-1.5 rounded-md border flex items-center gap-1.5 text-[12px] font-medium transition-colors ml-auto shadow-sm cursor-pointer",
               showFilters 
                 ? "bg-zinc-100 dark:bg-zinc-800 border-zinc-300 dark:border-zinc-600 text-zinc-900 dark:text-zinc-100" 
                 : "bg-white dark:bg-[#111111] border-zinc-200 dark:border-zinc-800 text-zinc-600 dark:text-zinc-300 hover:bg-zinc-50 dark:hover:bg-zinc-900/50"

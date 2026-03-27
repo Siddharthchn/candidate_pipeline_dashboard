@@ -58,13 +58,13 @@ export function DashboardClient() {
         <div className="flex items-center bg-zinc-100/50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 p-0.5 rounded-md">
           <button
             onClick={() => setView("kanban")}
-            className={cn("px-2.5 py-1.5 rounded-[4px] flex items-center justify-center transition-all", view === "kanban" ? "bg-white dark:bg-[#222222] shadow-[0_1px_2px_rgba(0,0,0,0.05)] border border-black/5 dark:border-white/5 text-zinc-900 dark:text-zinc-100" : "text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-300")}
+            className={cn("px-2.5 py-1.5 rounded-[4px] flex items-center justify-center transition-all cursor-pointer", view === "kanban" ? "bg-white dark:bg-[#222222] shadow-[0_1px_2px_rgba(0,0,0,0.05)] border border-black/5 dark:border-white/5 text-zinc-900 dark:text-zinc-100" : "text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-300")}
           >
             <LayoutGrid className="w-3.5 h-3.5" />
           </button>
           <button
             onClick={() => setView("table")}
-            className={cn("px-2.5 py-1.5 rounded-[4px] flex items-center justify-center transition-all", view === "table" ? "bg-white dark:bg-[#222222] shadow-[0_1px_2px_rgba(0,0,0,0.05)] border border-black/5 dark:border-white/5 text-zinc-900 dark:text-zinc-100" : "text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-300")}
+            className={cn("px-2.5 py-1.5 rounded-[4px] flex items-center justify-center transition-all cursor-pointer", view === "table" ? "bg-white dark:bg-[#222222] shadow-[0_1px_2px_rgba(0,0,0,0.05)] border border-black/5 dark:border-white/5 text-zinc-900 dark:text-zinc-100" : "text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-300")}
           >
             <List className="w-3.5 h-3.5" />
           </button>
