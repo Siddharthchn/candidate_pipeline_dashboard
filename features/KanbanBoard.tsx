@@ -46,13 +46,32 @@ export function KanbanBoard() {
     return matchesStage && matchesSearch && matchesExperience && matchesScore;
   });
 
+  const displayStages = [...stages].sort((a, b) => {
+    // If a specific stage is clicked, bring it to the absolute front
+    if (stageFilter !== "All") {
+      if (a === stageFilter) return -1;
+      if (b === stageFilter) return 1;
+    }
+    
+    // If searching, bring columns with results to the front
+    if (searchQuery.trim().length > 0) {
+      const aHasMatches = filteredCandidates.some(c => c.stage === a);
+      const bHasMatches = filteredCandidates.some(c => c.stage === b);
+      
+      if (aHasMatches && !bHasMatches) return -1;
+      if (!aHasMatches && bHasMatches) return 1;
+    }
+    
+    return 0; // keep relative order otherwise
+  });
+
   return (
     <DragDropContext onDragEnd={onDragEnd}>
       <div 
         ref={boardRef}
         className="flex gap-4 overflow-x-auto pb-4 kanban-scroll min-h-[600px]"
       >
-        {stages.map((stage) => {
+        {displayStages.map((stage) => {
           const columnCandidates = filteredCandidates.filter(c => c.stage === stage);
           
           return (
